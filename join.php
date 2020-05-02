@@ -18,4 +18,3 @@
         $message =$_SESSION['message'];
 */   
  require("join.html");
-   
