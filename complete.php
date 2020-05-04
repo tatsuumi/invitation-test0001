@@ -22,9 +22,6 @@ session_start();
                 //データの取得
                 $arr = pg_fetch_all($result);
         
-                print "<table id=\"dblist\" summary=\"結婚式参加可否データ一覧\">\n";
-                print "<caption>結婚式参加可否データ一覧</caption>\n";
-        
                 //テーブルヘッダとしてフィールド（カラム）名を出力
                 print "<tr>\n";
                 $flds = pg_num_fields($result);
