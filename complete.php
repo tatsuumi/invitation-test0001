@@ -12,12 +12,34 @@ session_start();
 	$dsn = 'mysql:dbname=join;host=localhost';
 	$user = 'testuser1';
         $password = 'tatsu227'; //パスワードはダブルコーテーション
-        
+        $flag=true;
         //postgresデータ追加
         $conn = "host=ec2-34-195-169-25.compute-1.amazonaws.com dbname=d7v30lqsd1nu6g user=vupprickmnebwc password=8497d96c15036bf8ce3d851645d7b75c84bb42d3590660d78a07f201792c4063";
         $link = pg_connect($conn);
+
+                //SQLの実行
+                $result = pg_query($conn, "SELECT * FROM people");
+                //データの取得
+                $arr = pg_fetch_all($result);
+        
+                print "<table id=\"dblist\" summary=\"結婚式参加可否データ一覧\">\n";
+                print "<caption>結婚式参加可否データ一覧</caption>\n";
+        
+                //テーブルヘッダとしてフィールド（カラム）名を出力
+                print "<tr>\n";
+                $flds = pg_num_fields($result);
+                //データの照合
+                foreach($arr as $rows){
+                foreach($rows as $value){
+                if("%s"=='$name'){$flag=false;}
+                }
+                }
+
+        if(flag){
         $sql = "INSERT INTO people (time,name,furigana,email,relation,attendance,message) 
-        VALUES ('$time','$name','$furigana','$email','$relation','$attendance','$message')";
+        VALUES ('$time','$name','$furigana','$email','$relation','$attendance','$message')";}
+        Else{$sql = "UPDATE people SET time='$time' , furigana='$furigana' , email='$email' ,
+         relation='$relation' , attendance ='$attendance' message='message' Where name = $name";}
         $result_flag = pg_query($sql);
         $close_flag = pg_close($link);
         
