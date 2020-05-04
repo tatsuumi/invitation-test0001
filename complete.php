@@ -28,7 +28,8 @@ session_start();
                 //データの照合
                 foreach($arr as $rows){
                 foreach($rows as $value){
-                if($value==$name){$flag=false;}
+                        $str=sprintf("%s",$value);
+                if($str==$name){$flag=false;}
                 }
                 }
 
