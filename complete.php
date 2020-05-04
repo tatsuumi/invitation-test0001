@@ -16,24 +16,11 @@ session_start();
         //postgresデータ追加
         $conn = "host=ec2-34-195-169-25.compute-1.amazonaws.com dbname=d7v30lqsd1nu6g user=vupprickmnebwc password=8497d96c15036bf8ce3d851645d7b75c84bb42d3590660d78a07f201792c4063";
         $link = pg_connect($conn);
-
-                //SQLの実行
-                $result = pg_query($conn, "SELECT * FROM people");
-                //データの取得
-                $arr = pg_fetch_all($result);
         
-                //テーブルヘッダとしてフィールド（カラム）名を出力
-                print "<tr>\n";
-                $flds = pg_num_fields($result);
-                //データの照合
-                foreach($arr as $rows){
-                foreach($rows as $value){
-                        $str=sprintf("%s",$value);
-                if($str==$name){$flag=false;}
-                }
-                }
+        $sql = "SELECT COUNT AS cnt FROM people";
+        $result_flag = pg_query($sql);
 
-        if(flag){
+        if(cnt==0){
         $sql = "INSERT INTO people (time,name,furigana,email,relation,attendance,message) 
         VALUES ('$time','$name','$furigana','$email','$relation','$attendance','$message')";}
         Else{$sql = "UPDATE people SET time='$time' , furigana='$furigana' , email='$email' ,
