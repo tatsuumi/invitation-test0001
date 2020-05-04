@@ -28,7 +28,7 @@ session_start();
                 //データの照合
                 foreach($arr as $rows){
                 foreach($rows as $value){
-                if("%s"=='$name'){$flag=false;}
+                if('$value'=='$name'){$flag=false;}
                 }
                 }
 
