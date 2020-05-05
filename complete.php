@@ -37,7 +37,22 @@ session_start();
 
 
 // If you are using Composer
-require("sendgrid-php/vendor/autoload.php");
+require 'sendgrid-php/vendor/autoload.php';
+$email = new \SendGrid\Mail\Mail();
+$email->setFrom("test@example.com", "送信者A");
+$email->setSubject("TestMail漢字");
+$email->addTo($_SESSION['email'], "受信者B");
+$email->addContent("text/plain", "日本語 English");
+$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+try {
+    $response = $sendgrid->send($email);
+    print $response->statusCode() . "\n";
+    print_r($response->headers());
+    print $response->body() . "\n";
+} catch (Exception $e) {
+    echo 'Caught exception: '. $e->getMessage() ."\n";
+}
+/*
 $email = new \SendGrid\Mail\Mail();
 $email->setFrom("test@example.com", "Example User");
 $email->setSubject("11月22日結婚式[達海&七海]のご案内");
@@ -71,7 +86,10 @@ try {
 } catch (Exception $e) {
     echo 'Caught exception: '. $e->getMessage() ."\n";
 }
-        
+*/
+
+
+
 /* //ローカルDB入力
 try{
 $dbh = new PDO($dsn, $user, $password);
