@@ -42,37 +42,46 @@ require 'sendgrid-php/vendor/autoload.php';
 // If you are not using Composer (recommended)
 // require("path/to/sendgrid-php/sendgrid-php.php");
 
-$from = new SendGrid\Email(null, "test@example.com");
-$subject = "11月22日結婚式[達海&七海]のご案内";
-$to = new SendGrid\Email(null, $email);
-$content = new SendGrid\Content("text/plain",
-"$name さま
+$request_body = json_decode('{
+        "personalizations": [
+          {
+            "to": [
+              {
+                "email":"tatsuumi227@gmail.com"
+              }
+            ],
+            "subject": "11月22日結婚式[達海&七海]のご案内"
+          }
+        ],
+        "from": {
+          "email": "test@example.com"
+        },
+        "content": [
+          {
+            "type": "text/plain",
+            "value":" さま
 
-11月22日結婚式[達海&七海]のご案内
-
-この度はご参加いただきありがとうございます。
-詳細は下記の通りとなります。
-
-日時
-2020年11月 22日（日曜日）
-受　付　午後2時
-挙　式　午後3時
-披露宴　午後4時
-
-場所
-葛西臨海公園（展望広場）
-https://goo.gl/maps/GRCMBcBdiqrLBUWi7
-江戸川区臨海町六丁目２
-TEL 0120-981-5678
-
-以上、みなさまのご参加を心よりお待ちしています。");
-$mail = new SendGrid\Mail($from, $subject, $to, $content);
-
-$apiKey = getenv('SENDGRID_API_KEY');
-$sg = new \SendGrid($apiKey);
-
-$response = $sg->client->mail()->send()->post($mail);
-
+            11月22日結婚式[達海&七海]のご案内
+            
+            この度はご参加いただきありがとうございます。
+            詳細は下記の通りとなります。
+            
+            日時
+            2020年11月 22日（日曜日）
+            受　付　午後2時
+            挙　式　午後3時
+            披露宴　午後4時
+            
+            場所
+            葛西臨海公園（展望広場）
+            https://goo.gl/maps/GRCMBcBdiqrLBUWi7
+            江戸川区臨海町六丁目２
+            TEL 0120-981-5678
+            
+            以上、みなさまのご参加を心よりお待ちしています。"
+          }
+        ]
+      }');
         
 /*//ローカルDB入力
 try{
