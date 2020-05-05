@@ -72,7 +72,7 @@ try {
     echo 'Caught exception: '. $e->getMessage() ."\n";
 }
         
-/*//ローカルDB入力
+/* //ローカルDB入力
 try{
 $dbh = new PDO($dsn, $user, $password);
 if (!$dbh) {
