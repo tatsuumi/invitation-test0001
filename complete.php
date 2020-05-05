@@ -37,7 +37,7 @@ session_start();
 
 
 // If you are using Composer
-require 'sendgrid-php/vendor/autoload.php';
+require("sendgrid-php/vendor/autoload.php");
 
 $sendgrid = new SendGrid(getenv('SENDGRID_USERNAME'), getenv('SENDGRID_PASSWORD'));
 $email = new SendGrid\Email();
