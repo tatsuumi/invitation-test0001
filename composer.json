@@ -16,5 +16,8 @@
 		"bin/heroku-hhvm-nginx",
 		"bin/heroku-php-apache2",
 		"bin/heroku-php-nginx"
-	]
+	],
+		"require": {
+		  "sendgrid/sendgrid": "~5.1"
+		} 
 }

@@ -16,21 +16,65 @@ session_start();
         //postgresデータ追加
         $conn = "host=ec2-34-195-169-25.compute-1.amazonaws.com dbname=d7v30lqsd1nu6g user=vupprickmnebwc password=8497d96c15036bf8ce3d851645d7b75c84bb42d3590660d78a07f201792c4063";
         $link = pg_connect($conn);
-
-        $result = pg_query($conn, "SELECT * FROM people");
+/*
+        $sql = "SELECT * FROM people";
+        $result = pg_query($link, "SELECT * FROM people");
 
         for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
-         $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-         if($rows['name']==$name){flag==false;}
+                $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+                          if($rows['name']==$name){$flag=false;
+                        }
         }
-
-        if(flag){
+        $close_flag = pg_close($link);
+*/
+        if($flag){
         $sql = "INSERT INTO people (time,name,furigana,email,relation,attendance,message) 
         VALUES ('$time','$name','$furigana','$email','$relation','$attendance','$message')";}
         Else{$sql = "UPDATE people SET time='$time' , furigana='$furigana' , email='$email' ,
          relation='$relation' , attendance ='$attendance' message='message' Where name = $name";}
         $result_flag = pg_query($sql);
         $close_flag = pg_close($link);
+
+
+// If you are using Composer
+require 'sendgrid-php/vendor/autoload.php';
+
+// If you are not using Composer (recommended)
+// require("path/to/sendgrid-php/sendgrid-php.php");
+
+$from = new SendGrid\Email(null, "test@example.com");
+$subject = "11月22日結婚式[達海&七海]のご案内";
+$to = new SendGrid\Email(null, $email);
+$content = new SendGrid\Content("text/plain",
+"$name さま
+
+11月22日結婚式[達海&七海]のご案内
+
+この度はご参加いただきありがとうございます。
+詳細は下記の通りとなります。
+
+日時
+2020年11月 22日（日曜日）
+受　付　午後2時
+挙　式　午後3時
+披露宴　午後4時
+
+場所
+葛西臨海公園（展望広場）
+https://goo.gl/maps/GRCMBcBdiqrLBUWi7
+江戸川区臨海町六丁目２
+TEL 0120-981-5678
+
+以上、みなさまのご参加を心よりお待ちしています。");
+$mail = new SendGrid\Mail($from, $subject, $to, $content);
+
+$apiKey = getenv('SENDGRID_API_KEY');
+$sg = new \SendGrid($apiKey);
+
+$response = $sg->client->mail()->send()->post($mail);
+echo $response->statusCode();
+echo $response->headers();
+echo $response->body();
         
 /*//ローカルDB入力
 try{
