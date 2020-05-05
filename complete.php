@@ -35,13 +35,13 @@ session_start();
         $result_flag = pg_query($sql);
         $close_flag = pg_close($link);
 
-/* 
+
 // If you are using Composer
 require 'vendor/autoload.php';
 $email = new \SendGrid\Mail\Mail();
 $email->setFrom("test@example.com", "送信者A");
 $email->setSubject("TestMail漢字");
-$email->addTo($_SESSION['email'], "受信者B");
+$email->addTo("tatsuumiaoki@yahoo.co.jp", "受信者B");
 $email->addContent("text/plain", "日本語 English");
 $sendgrid = new \SendGrid(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);
 try {
@@ -52,7 +52,6 @@ try {
 } catch (Exception $e) {
     echo 'Caught exception: '. $e->getMessage() ."\n";
 }
-*/
 
 /*
 $email = new \SendGrid\Mail\Mail();
