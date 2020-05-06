@@ -63,6 +63,11 @@ TEL 0120-981-5678
 
 以上、みなさまのご参加を心よりお待ちしています。");
 $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+try {
+    $response = $sendgrid->send($email);
+} catch (Exception $e) {
+    echo 'Caught exception: '. $e->getMessage() ."\n";
+}  
 }
 
 /*
