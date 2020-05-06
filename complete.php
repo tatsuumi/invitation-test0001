@@ -35,7 +35,7 @@ session_start();
         $result_flag = pg_query($sql);
         $close_flag = pg_close($link);
 
-
+/*
 // If you are using Composer
 require 'vendor/autoload.php';
 $email = new \SendGrid\Mail\Mail();
@@ -54,7 +54,7 @@ try {
     
 }
 
-/*
+*/
 $email = new \SendGrid\Mail\Mail();
 $email->setFrom("test@example.com", "Example User");
 $email->setSubject("11月22日結婚式[達海&七海]のご案内");
@@ -88,7 +88,7 @@ try {
 } catch (Exception $e) {
     echo 'Caught exception: '. $e->getMessage() ."\n";
 }
-*/
+
 
 
 
