@@ -51,6 +51,7 @@ try {
     print $response->body() . "\n";
 } catch (Exception $e) {
     echo 'Caught exception: '. $e->getMessage() ."\n";
+    
 }
 
 /*
