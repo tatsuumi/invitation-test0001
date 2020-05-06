@@ -37,7 +37,7 @@ session_start();
 
 
 // If you are using Composer
-require 'vendor/autoload.php';
+require 'sendgrid-php.php';
 $email = new \SendGrid\Mail\Mail();
 $email->setFrom("test@example.com", "送信者A");
 $email->setSubject("TestMail漢字");
