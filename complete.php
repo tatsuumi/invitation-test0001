@@ -1,4 +1,10 @@
 <?php
+
+// ユーザによる中断を無視する
+ignore_user_abort(true);
+// タイムアウトしないようにする
+set_time_limit(500);
+
 session_start();
 
         $time =$_SESSION['time'];
@@ -75,7 +81,12 @@ $email = new \SendGrid\Mail\Mail();
 $email->setFrom("wedding_info@example.com", "wedding_info");
 $email->setSubject($name."さま　出席");
 $email->addTo("tatsuumi227@gmail.com", "出席者様");
-$email->addContent("text/plain", $message);
+$email->addContent("text/plain",$message.
+$name.
+$furigana.
+$_SESSION['email'].
+$relation
+);
 $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
 try {
     $response = $sendgrid->send($email);
