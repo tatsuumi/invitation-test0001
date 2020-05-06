@@ -75,8 +75,7 @@ $email = new \SendGrid\Mail\Mail();
 $email->setFrom("wedding_info@example.com", "wedding_info");
 $email->setSubject($name."さま　出席");
 $email->addTo("tatsuumi227@gmail.com", "出席者様");
-$email->addContent("text/plain", $name."さま 出席
-");
+$email->addContent("text/plain", $message);
 $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
 try {
     $response = $sendgrid->send($email);
