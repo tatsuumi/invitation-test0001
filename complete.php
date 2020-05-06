@@ -35,7 +35,7 @@ session_start();
         $result_flag = pg_query($sql);
         $close_flag = pg_close($link);
 
-
+/*
 // If you are using Composer
 require __DIR__ . '/../vendor/autoload.php';
 $email = new \SendGrid\Mail\Mail();
@@ -52,7 +52,7 @@ try {
 } catch (Exception $e) {
     echo 'Caught exception: '. $e->getMessage() ."\n";
 }
-
+*/
 /*
 $email = new \SendGrid\Mail\Mail();
 $email->setFrom("test@example.com", "Example User");
