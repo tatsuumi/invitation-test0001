@@ -7,19 +7,6 @@ set_time_limit(500);
 
 session_start();
 
-function tick()
-{
-  echo "tick\n";
-}
-
-echo "before run()\n";
-
-Amp\run(function() {
-  Amp\repeat("tick", $msInterval = 1000);
-  Amp\repeat(function () {echo "tack\n";}, 500);
-  Amp\once("Amp\stop", $msDelay = 5000);
-});
-
         $time =$_SESSION['time'];
         $name =$_SESSION['name'];
         $furigana =$_SESSION['furigana'];
@@ -27,6 +14,9 @@ Amp\run(function() {
         $relation =$_SESSION['relation'];
         $attendance =$_SESSION['attendance'];
         $message =$_SESSION['message'];
+
+         // confirm.html 読み込み
+        require("complete.html");
 
 	$dsn = 'mysql:dbname=join;host=localhost';
 	$user = 'testuser1';
@@ -53,58 +43,37 @@ Amp\run(function() {
          relation='$relation' , attendance ='$attendance' message='message' Where name = $name";}
         $result_flag = pg_query($sql);
         $close_flag = pg_close($link);
+        
+        //メール送付
+        if($attendance=="出席"&&!empty($email)){
+        mb_language("Japanese");
+        mb_internal_encoding("UTF-8");
+        $subject = "11月22日結婚式[達海&七海]のご案内";     // 題名
+        $body =
+        "$name さま
 
-if($attendance=="出席"&&!empty($email)){
-// If you are using Composer
-require 'vendor/autoload.php';
-$email = new \SendGrid\Mail\Mail();
-$email->setFrom("wedding_info@example.com", "wedding_info");
-$email->setSubject("11月22日結婚式[達海&七海]のご案内");
-$email->addTo($_SESSION['email'], "出席者様");
-$email->addContent("text/plain", $name." さま
+        11月22日結婚式[達海&七海]のご案内
 
-11月22日結婚式[達海&七海]のご案内
+        この度はご参加いただきありがとうございます。
+        詳細は下記の通りとなります。
 
-この度はご参加いただきありがとうございます。
-詳細は下記の通りとなります。
+        日時
+        2020年11月 22日（日曜日）
+        受　付　午後2時
+        挙　式　午後3時
+        披露宴　午後4時
 
-日時
-2020年11月 22日（日曜日）
-受　付　午後2時
-挙　式　午後3時
-披露宴　午後4時
-
-場所
-葛西臨海公園（展望広場）
-https://goo.gl/maps/GRCMBcBdiqrLBUWi7
-江戸川区臨海町六丁目２
-TEL 0120-981-5678
-
-以上、みなさまのご参加を心よりお待ちしております。");
-$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
-try {
-    $response = $sendgrid->send($email);
-} catch (Exception $e) {
-    echo 'Caught exception: '. $e->getMessage() ."\n";
-}  
-
-
-require 'vendor/autoload.php';
-$email = new \SendGrid\Mail\Mail();
-$email->setFrom("wedding_info@example.com", "wedding_info");
-$email->setSubject($name."さま　出席");
-$email->addTo("tatsuumi227@gmail.com", "出席者様");
-$email->addContent("text/plain",$message);
-$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
-try {
-    $response = $sendgrid->send($email);
-} catch (Exception $e) {
-    echo 'Caught exception: '. $e->getMessage() ."\n";
-}  
-}
-
-
-/* //ローカルDB入力
+        場所
+        葛西臨海公園（展望広場）
+        https://goo.gl/maps/GRCMBcBdiqrLBUWi7
+        江戸川区臨海町六丁目２
+        TEL 0120-981-5678
+        
+        以上、みなさまのご参加を心よりお待ちしています。"; // 本文
+        $to =$email ;          // 送信先
+        $result = mb_send_mail($to, $subject, $body);
+        }else{echo "不成功";}
+/*//ローカルDB入力
 try{
 $dbh = new PDO($dsn, $user, $password);
 if (!$dbh) {
@@ -127,9 +96,6 @@ $res = $dbh->query($sql);
 // 接続を閉じる
 $dbh = null;
 */
-
- // confirm.html 読み込み
- require("complete.html");
 
     $_SESSION = array();
     session_destroy();
