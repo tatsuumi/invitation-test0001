@@ -2,7 +2,10 @@
     
   }
 
-body{width:100%;}
+body{
+  margin:0px;
+  width:100%;
+}
 
 p{
 font-size: 48px;
