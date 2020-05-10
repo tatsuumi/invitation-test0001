@@ -46,33 +46,42 @@ session_start();
         
         //メール送付
         if($attendance=="出席"&&!empty($email)){
-        mb_language("Japanese");
-        mb_internal_encoding("UTF-8");
-        $subject = "11月22日結婚式[達海&七海]のご案内";     // 題名
-        $body =
-        "$name さま
+                require 'vendor/autoload.php';
 
-        11月22日結婚式[達海&七海]のご案内
+                $email = new \SendGrid\Mail\Mail();
+                $email->setFrom("wedding_info@example.com", "wedding_info");
+                $email->setSubject("11月22日結婚式[達海&七海]のご案内");
+                $email->addTo($_SESSION['email'], $_SESSION['name']);
+                $email->addContent("text/plain", "$name さま
 
-        この度はご参加いただきありがとうございます。
-        詳細は下記の通りとなります。
-
-        日時
-        2020年11月 22日（日曜日）
-        受　付　午後2時
-        挙　式　午後3時
-        披露宴　午後4時
-
-        場所
-        葛西臨海公園（展望広場）
-        https://goo.gl/maps/GRCMBcBdiqrLBUWi7
-        江戸川区臨海町六丁目２
-        TEL 0120-981-5678
+                11月22日結婚式[達海&七海]のご案内
         
-        以上、みなさまのご参加を心よりお待ちしています。"; // 本文
-        $to =$email ;          // 送信先
-        $result = mb_send_mail($to, $subject, $body);
-        }else{echo "不成功";}
+                この度はご参加いただきありがとうございます。
+                詳細は下記の通りとなります。
+        
+                日時
+                2020年11月 22日（日曜日）
+                受　付　午後2時
+                挙　式　午後3時
+                披露宴　午後4時
+        
+                場所
+                葛西臨海公園（展望広場）
+                https://goo.gl/maps/GRCMBcBdiqrLBUWi7
+                江戸川区臨海町六丁目２
+                TEL 0120-981-5678
+                
+                以上、みなさまのご参加を心よりお待ちしています。");
+                $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+                try {
+                    $response = $sendgrid->send($email);
+                    print $response->statusCode() . "\n";
+                    print_r($response->headers());
+                    print $response->body() . "\n";
+                } catch (Exception $e) {
+                    echo 'Caught exception: '. $e->getMessage() ."\n";
+                }
+
 /*//ローカルDB入力
 try{
 $dbh = new PDO($dsn, $user, $password);
