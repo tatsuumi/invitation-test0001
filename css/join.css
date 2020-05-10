@@ -14,14 +14,14 @@ font-family: 'YuGothic';
 
 
 
-input:focus {
-  border:solid 2px rgb(131, 194, 119);
+input:focus-ring{
+  outline: none;
 }
-textarea:focus{
-  border:solid 2px  rgb(131, 194, 119);
+textarea:focus-ring{
+  outline: none;
 }
-select:focus{
-  border:solid 2px  rgb(131, 194, 119);
+select:focus-ring{
+  outline: none;
 }
 
 #text{
