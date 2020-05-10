@@ -18,6 +18,7 @@
 		"bin/heroku-php-nginx"
 	],
 		"require": {
-		  "sendgrid/sendgrid": "~7.5"
+		  "sendgrid/sendgrid": "~7.5",
+		"amphp/amp": "^2.4"
 		}
 }

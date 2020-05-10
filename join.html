@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-<style>
-body {
-font-size: 48px;
-font-family: 'YuGothic';
-}</style>
-  <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=UTF-8">
+    <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/join.css">
+    <script type="text/javascript" src="js/join.js"></script>
     <title>Form</title>
     <!-- <style> resizeimage { width: 100%; }</style> -->
   </head>
   <body background="#DDDDDD" text="#201040">
+    <canvas id="canvas"></canvas>
     <div style="text-align:center;">
      <img src="sunset2.jpg" alt='sunset2' />
     </div>
-<br><hr><br>
-<H1>GREETINGS</H1>
-<br><hr><br>
+    <br><hr><br>
+    <H1>GREETINGS</H1>
+    <br><hr><br>
 
 <!--　<div class=WordSection1 style='layout-grid:18.0pt'>  -->
   <!--
@@ -91,10 +89,10 @@ TEL 0120-981-5678
 <H1>RSVP<H1>
 <br><hr><br>
 <FORM action="./confirm.php" method="POST">
-<input type="text" style="width:100%;margin:20px;font-size:48px;" value="" name="name" placeholder="ご芳名" required><br>
-<input type="text" style="width:100%;margin:20px;font-size:48px;" value="" name="furigana" placeholder="フリガナ"><br>
-<input type="text" style="width:100%;margin:20px;font-size:48px;" value="" name="email" placeholder="メール"><br>
-<textarea  placeholder="メッセージをご入力ください"name="message" style="width:100%;margin:20px;font-size:48px;height: 180px;"></textarea><br>
+<input type="text" id="text" style="width:100%;margin:20px;font-size:48px;" value="" name="name" placeholder="ご芳名" required><br>
+<input type="text" id="text" style="width:100%;margin:20px;font-size:48px;" value="" name="furigana" placeholder="フリガナ"><br>
+<input type="text" id="text" style="width:100%;margin:20px;font-size:48px;" value="" name="email" placeholder="メール"><br>
+<textarea  id="text"  placeholder="メッセージをご入力ください"name="message" style="width:100%;margin:20px;font-size:48px;height: 180px;"></textarea><br>
 <select style="width:47%;margin-top:10px;margin-bottom:10px;margin-left:20px;font-size:48px; "name="relation" required>
 <option value="">ご関係について</option>
 <option value="新郎方">新郎方</option>
@@ -105,6 +103,6 @@ TEL 0120-981-5678
 <option value="出席">ご出席</option>
 <option value="欠席">ご欠席</option>
 </select><br>
-<INPUT type="submit"style="width:20%;margin:20px;font-size:48px;" value="送信">
+<INPUT   id="button" type="submit"style="width:20%;margin:20px;font-size:48px;" value="送信">
 </FORM>
 </body></html>

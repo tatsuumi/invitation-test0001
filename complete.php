@@ -7,6 +7,19 @@ set_time_limit(500);
 
 session_start();
 
+function tick()
+{
+  echo "tick\n";
+}
+
+echo "before run()\n";
+
+Amp\run(function() {
+  Amp\repeat("tick", $msInterval = 1000);
+  Amp\repeat(function () {echo "tack\n";}, 500);
+  Amp\once("Amp\stop", $msDelay = 5000);
+});
+
         $time =$_SESSION['time'];
         $name =$_SESSION['name'];
         $furigana =$_SESSION['furigana'];
