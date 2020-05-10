@@ -5,6 +5,7 @@ ignore_user_abort(true);
 // タイムアウトしないようにする
 set_time_limit(500);
 
+
 session_start();
 
         $time =$_SESSION['time'];
@@ -14,6 +15,10 @@ session_start();
         $relation =$_SESSION['relation'];
         $attendance =$_SESSION['attendance'];
         $message =$_SESSION['message'];
+
+        // confirm.html 読み込み
+         require("complete.html");
+
 
 	$dsn = 'mysql:dbname=join;host=localhost';
 	$user = 'testuser1';
@@ -115,8 +120,6 @@ $res = $dbh->query($sql);
 $dbh = null;
 */
 
- // confirm.html 読み込み
- require("complete.html");
 
     $_SESSION = array();
     session_destroy();

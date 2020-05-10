@@ -18,5 +18,6 @@
 		"bin/heroku-php-nginx"
 	],
 		"require": {
+		  "sendgrid/sendgrid": "~7.5"
 		}
 }

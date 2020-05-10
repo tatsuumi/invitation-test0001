@@ -10,5 +10,4 @@ return array(
     'SendGrid\\Mail\\' => array($vendorDir . '/sendgrid/sendgrid/lib/mail'),
     'SendGrid\\Contacts\\' => array($vendorDir . '/sendgrid/sendgrid/lib/contacts'),
     'SendGrid\\' => array($vendorDir . '/sendgrid/php-http-client/lib'),
-    'Amp\\' => array($vendorDir . '/amphp/amp/lib'),
 );
