@@ -15,6 +15,7 @@ session_start();
         $relation =$_SESSION['relation'];
         $attendance =$_SESSION['attendance'];
         $message =$_SESSION['message'];
+        $nijikai =$_SESSION['nijikai'];
 
         // confirm.html 読み込み
          require("complete.html");
@@ -39,8 +40,8 @@ session_start();
         $close_flag = pg_close($link);
 */
         if($flag){
-        $sql = "INSERT INTO people (time,name,furigana,email,relation,attendance,message) 
-        VALUES ('$time','$name','$furigana','$email','$relation','$attendance','$message')";}
+        $sql = "INSERT INTO people (time,name,furigana,email,relation,attendance,message,nijikai) 
+        VALUES ('$time','$name','$furigana','$email','$relation','$attendance','$message','$nijikai')";}
         Else{$sql = "UPDATE people SET time='$time' , furigana='$furigana' , email='$email' ,
          relation='$relation' , attendance ='$attendance' message='message' Where name = $name";}
         $result_flag = pg_query($sql);
