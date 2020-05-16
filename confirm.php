@@ -18,7 +18,7 @@ $_SESSION['nijikai'] = $_POST['nijikai'];
     $relation = $_POST['relation'];
     $attendance = $_POST['attendance'];
     $message = $_POST['message'];
-    $nijikai = $$_POST['nijikai'];
+    $nijikai = $_POST['nijikai'];
 
  // confirm.html 読み込み
  require("confirm.html");
