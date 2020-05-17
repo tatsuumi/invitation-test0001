@@ -2,15 +2,15 @@ body {
     font-size: 40px;
   font-family: 'YuGothic'
   }
+
 h1{
     font-size: 70px;
   }
-div.wrap table{
-    margin-right: 20px;
+
+.wrap {
+    margin-left: 20px;
 }
-div.wrap p{
-    margin-right: 20px;
-}
+
 input{
     width:20%;
     margin:20px;
