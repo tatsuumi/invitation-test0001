@@ -9,6 +9,7 @@ $_SESSION['email'] = $_POST['email'];
 $_SESSION['relation'] = $_POST['relation'];
 $_SESSION['attendance'] = $_POST['attendance'];
 $_SESSION['message'] = $_POST['message'];
+$_SESSION['cant-eat'] = $_POST['cant-eat'];
 $_SESSION['nijikai'] = $_POST['nijikai'];
 
     $time = date("Y/m/d H:i:s");
@@ -18,6 +19,7 @@ $_SESSION['nijikai'] = $_POST['nijikai'];
     $relation = $_POST['relation'];
     $attendance = $_POST['attendance'];
     $message = $_POST['message'];
+    $canteat = $_POST['cant-eat'];
     $nijikai = $_POST['nijikai'];
 
  // confirm.html 読み込み
