@@ -16,7 +16,7 @@ session_start();
         $attendance =$_SESSION['attendance'];
         $message =$_SESSION['message'];
         $nijikai =$_SESSION['nijikai'];
-        $canteat =$_SESSION['cant-eat'];
+        $canteat =$_SESSION['canteat'];
 
         // confirm.html 読み込み
          require("complete.html");
