@@ -41,8 +41,8 @@ session_start();
         $close_flag = pg_close($link);
 */
         if($flag){
-        $sql = "INSERT INTO people (time,name,furigana,email,relation,attendance,message,nijikai,canteat) 
-        VALUES ('$time','$name','$furigana','$email','$relation','$attendance','$message','$nijikai','$canteat')";}
+        $sql = "INSERT INTO people (time,name,furigana,email,relation,attendance,nijikai,message,canteat) 
+        VALUES ('$time','$name','$furigana','$email','$relation','$attendance','$nijikai','$message','$canteat')";}
         Else{$sql = "UPDATE people SET time='$time' , furigana='$furigana' , email='$email' ,
          relation='$relation' , attendance ='$attendance' message='message' Where name = $name";}
         $result_flag = pg_query($sql);
