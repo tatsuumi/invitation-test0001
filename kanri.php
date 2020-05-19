@@ -15,6 +15,4 @@ foreach ($stmt as $row) {
     if($row['username']==$usrname&&$row['password']==$password){$flag=transliterator_create_from_rules;}
   }
 
-if(flag){
-require("kanri.html");}
-else{require("join.html");}
+if($flag){require("kanri.html");}else{require("join.html");}
