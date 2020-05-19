@@ -8,14 +8,13 @@ $constr =  "host=ec2-35-171-31-33.compute-1.amazonaws.com port=5432 dbname=d9can
 //DBに接続
 $conn = pg_connect($constr);
 
-$result = pg_query($conn, "SELECT * FROM userdata");
+$result = pg_query($conn, "SELECT username,password FROM userdata");
 
-for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
-    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-    if($row['username']==$username&&$row['password']==$password){$flag=TRUE;}
-    echo $row['username'].$username;
-    echo $row['password'].$password;
-}
+		while ($row = pg_fetch_row($result)) {
+			echo "username：$row[0] password:$row[1] <br />\r\n";
+		}
+
+
 /*
 if($flag){require("kanri.html");}else{require("join.html");}
 */
