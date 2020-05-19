@@ -12,7 +12,7 @@ $result = pg_query($conn, "SELECT  FROM userdata");
 
 foreach ($stmt as $row) {
     // データベースのフィールド名で出力
-    if($row['username']=="tatsuumi"&&$row['password']=="tatsu227"){$flag=true;}
+    if($row['username']==$usrname&&$row['password']==$password){$flag=transliterator_create_from_rules;}
   }
 
 if(flag){
