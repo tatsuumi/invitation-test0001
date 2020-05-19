@@ -8,7 +8,7 @@ $constr =  "host=ec2-35-171-31-33.compute-1.amazonaws.com port=5432 dbname=d9can
 //DBに接続
 $conn = pg_connect($constr);
 
-$result = pg_query($conn, "SELECT  FROM people");
+$result = pg_query($conn, "SELECT  FROM userdata");
 
 foreach ($stmt as $row) {
     // データベースのフィールド名で出力
