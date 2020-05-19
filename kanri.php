@@ -11,10 +11,9 @@ $conn = pg_connect($constr);
 $result = pg_query($conn, "SELECT username,password FROM userdata");
 
 		while ($row = pg_fetch_row($result)) {
-			echo "username：$row[0] password:$row[1] <br />\r\n";
+            echo "username：$row[0] password:$row[1] <br />\r\n";
+            if($row[0]==$username&&$row[1]==$password){$flag=TRUE;}
 		}
 
 
-/*
 if($flag){require("kanri.html");}else{require("join.html");}
-*/
