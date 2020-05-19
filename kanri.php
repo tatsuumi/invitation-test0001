@@ -10,9 +10,9 @@ $conn = pg_connect($constr);
 
 $result = pg_query($conn, "SELECT  FROM userdata");
 
-foreach ($stmt as $row) {
-    // データベースのフィールド名で出力
+for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
+    $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
     if($row['username']==$usrname&&$row['password']==$password){$flag=TRUE;}
-  }
+}
 
 if($flag){require("kanri.html");}else{require("join.html");}
