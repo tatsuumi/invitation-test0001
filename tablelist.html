@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=UTF-8">
+      <link rel="stylesheet" type="text/css" href="css.css">
+    <title>結婚式参加可否一覧</title>
+</head>
+    <?php
+
+        //pg_connect()に渡すパラメータの指定
+        $constr = "host=ec2-35-171-31-33.compute-1.amazonaws.com port=5432 dbname=d9canmf389vsq5 user=ceoecrklypftbt password=f68e1b403c34f2de22faabb1090e1d13005192acd1edaa6b22ce243120c0cc32";
+         //DBに接続
+         $conn = pg_connect($constr);
+        //SQLの実行
+        $result = pg_query($conn, "SELECT name,attendance FROM people");
+        //データの取得
+        $arr = pg_fetch_all($result);
+
+        print "<table id=\"dblist\" summary=\"結婚式参加可否データ一覧\">\n";
+        print "<caption>結婚式参加可否データ一覧</caption>\n";
+
+        //テーブルヘッダとしてフィールド（カラム）名を出力
+        print "<tr>\n";
+        $flds = pg_num_fields($result);
+        for($i=0; $i<$flds; $i++){
+          $field = pg_field_name($result, $i);
+         printf("<th abbr=\"%s\">%s</th>\n", $field, $field);
+        }
+        print "</tr>\n";
+
+        //データの出力
+        foreach($arr as $rows){
+        print "<tr>\n";
+        foreach($rows as $value){
+         printf("<td>%s</td>\n", $value);
+        }
+        print "</tr>\n";
+        }
+        print "</table>\n";
+
+        $result = pg_query($conn, "SELECT name,attendance FROM people where relation = '新郎方'");
+        //データの取得
+        $arr = pg_fetch_all($result);
+
+        print "<table id=\"dblist\" summary=\"たつの友達\">\n";
+        print "<caption>たつの友達</caption>\n";
+
+        //テーブルヘッダとしてフィールド（カラム）名を出力
+        print "<tr>\n";
+        $flds = pg_num_fields($result);
+        for($i=0; $i<$flds; $i++){
+          $field = pg_field_name($result, $i);
+         printf("<th abbr=\"%s\">%s</th>\n", $field, $field);
+        }
+        print "</tr>\n";
+
+        //データの出力
+        foreach($arr as $rows){
+        print "<tr>\n";
+        foreach($rows as $value){
+         printf("<td>%s</td>\n", $value);
+        }
+        print "</tr>\n";
+        }
+        print "</table>\n";
+
+      
+        $result = pg_query($conn, "SELECT name,attendance FROM people where relation = '新婦方'");
+        //データの取得
+        $arr = pg_fetch_all($result);
+
+        print "<table id=\"dblist\" summary=\"ななの友達\">\n";
+        print "<caption>ななの友達</caption>\n";
+
+         //テーブルヘッダとしてフィールド（カラム）名を出力
+         print "<tr>\n";
+         $flds = pg_num_fields($result);
+        for($i=0; $i<$flds; $i++){
+          $field = pg_field_name($result, $i);
+         printf("<th abbr=\"%s\">%s</th>\n", $field, $field);
+        }
+        print "</tr>\n";
+
+        //データの出力
+        foreach($arr as $rows){
+        print "<tr>\n";
+        foreach($rows as $value){
+         printf("<td>%s</td>\n", $value);
+         }
+        print "</tr>\n";
+        }
+        print "</table>\n";
+
+        $result = pg_query($conn, "SELECT name FROM people where attendance = '欠席'");
+        //データの取得
+        $arr = pg_fetch_all($result);
+
+        print "<table id=\"dblist\" summary=\"残念な友達\">\n";
+        print "<caption>残念な友達</caption>\n";
+
+         //テーブルヘッダとしてフィールド（カラム）名を出力
+         print "<tr>\n";
+         $flds = pg_num_fields($result);
+        for($i=0; $i<$flds; $i++){
+          $field = pg_field_name($result, $i);
+         printf("<th abbr=\"%s\">%s</th>\n", $field, $field);
+        }
+        print "</tr>\n";
+
+        //データの出力
+        foreach($arr as $rows){
+        print "<tr>\n";
+        foreach($rows as $value){
+         printf("<td>%s</td>\n", $value);
+         }
+        print "</tr>\n";
+        }
+        print "</table>\n";
+
+//DBとの接続を閉じる
+pg_close($conn); ?>
+
+<a href="rows.php">参加者一覧</a>
+
+</body>
+</html>
