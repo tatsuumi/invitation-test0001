@@ -44,11 +44,15 @@ font-family: 'YuGothic';
 }
 
 #button{
--moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
--webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0,0.2);
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
-font-family: 'YuGothic';
+  display: block;
+  padding: 0; 
+  border-radius: 1.6em;
+  color:white;
+  font-size: 48px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(-45deg, rgba(87, 225, 181, 1) 0%, rgba(0, 63, 255, 1) 100%);
+  box-shadow: 0 5px 20px rgba(0, 63, 255, .5);
 }
