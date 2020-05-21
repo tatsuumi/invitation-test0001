@@ -27,7 +27,12 @@ session_start();
         $password = 'tatsu227'; //パスワードはダブルコーテーション
         $flag=true;
         //postgresデータ追加
-        $conn="host=ec2-35-171-31-33.compute-1.amazonaws.com port=5432 dbname=d9canmf389vsq5 user=ceoecrklypftbt password=f68e1b403c34f2de22faabb1090e1d13005192acd1edaa6b22ce243120c0cc32";
+        $conn=  "
+        host=ec2-52-0-155-79.compute-1.amazonaws.com 
+        port=5432 
+        dbname=dfsgi85ac0e0ld 
+        user=aspaxqsxuivosj
+        password=d2f1cb0ed93f85059fe391019101a9904934907825fb19cc06fdc8261acddf6e";
         $link = pg_connect($conn);
 /*
         $sql = "SELECT * FROM people";
