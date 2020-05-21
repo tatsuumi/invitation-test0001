@@ -4,7 +4,12 @@ $password = $_POST['password'];
 $flag=FALSE;
 
 //pg_connect()に渡すパラメータの指定
-$conn= "host=ec2-52-0-155-79.compute-1.amazonaws.com port=5432 dbname=dfsgi85ac0e0ld user=aspaxqsxuivosj password=d2f1cb0ed93f85059fe391019101a9904934907825fb19cc06fdc8261acddf6e";
+$constr =  "
+host=ec2-52-0-155-79.compute-1.amazonaws.com 
+port=5432 
+dbname=dfsgi85ac0e0ld 
+user=aspaxqsxuivosj
+password=d2f1cb0ed93f85059fe391019101a9904934907825fb19cc06fdc8261acddf6e";
 //DBに接続
 $conn = pg_connect($constr);
 
