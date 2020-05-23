@@ -20,7 +20,8 @@ password=d2f1cb0ed93f85059fe391019101a9904934907825fb19cc06fdc8261acddf6e";
         $result = pg_query($conn, "SELECT temper FROM temper");
         //データの取得
         $arr = pg_fetch_all($result);
-
+        print "<table id=\"dblist\" summary=\"部屋の温度\">\n";
+        print "<caption>部屋の温度</caption>\n";
          //テーブルヘッダとしてフィールド（カラム）名を出力
          print "<tr>\n";
          $flds = pg_num_fields($result);
