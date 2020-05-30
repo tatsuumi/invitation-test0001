@@ -20,20 +20,12 @@ session_start();
 
         // confirm.html 読み込み
          require("complete.html");
-    
-
-	    $dsn = $_SESSION['dsn'];
-	    $user = $_SESSION['user'];
-        $password = $_SESSION['password']; 
         
         $flag=true;
         //postgresデータ追加
-        $constr =  "
-        host=ec2-52-0-155-79.compute-1.amazonaws.com 
-        port=5432 
-        dbname=dfsgi85ac0e0ld 
-        user=aspaxqsxuivosj
-        password=d2f1cb0ed93f85059fe391019101a9904934907825fb19cc06fdc8261acddf6e";$link = pg_connect($conn);
+        session_start();
+        $constr=$_SESSION['constr'];
+        $link = pg_connect($conn);
 /*
         $sql = "SELECT * FROM people";
         $result = pg_query($link, "SELECT * FROM people");
