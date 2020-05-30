@@ -14,5 +14,5 @@ $result = pg_query($conn,"SELECT time,temper FROM temper");
 $str = $time_data;
 $str1 = explode(" ", $str); 
 $str2 = explode(":", $str1[1]); 
-$time=$str2[0]+':'+$str2[1] 
+$time=$str2[0]+':'+$str2[1];
 require('temper1.html');
