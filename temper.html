@@ -17,7 +17,7 @@ password=d2f1cb0ed93f85059fe391019101a9904934907825fb19cc06fdc8261acddf6e";
         //DBに接続
          $conn = pg_connect($constr);
         //SQLの実行
-        $result = pg_query($conn, "SELECT id,time,temper FROM temper ORDER BY id DESC");
+        $result = pg_query($conn, "SELECT time,temper FROM temper ORDER BY id DESC");
         //データの取得
         $arr = pg_fetch_all($result);
         print "<table id=\"dblist\" summary=\"部屋の温度\">\n";
