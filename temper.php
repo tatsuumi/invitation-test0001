@@ -1,2 +1,18 @@
 <?php
-require('temper.html');
+//pg_connect()に渡すパラメータの指定
+session_start();
+$constr=$_SESSION['constr']; 
+//DBに接続
+$conn = pg_connect($constr);
+
+$result = pg_query($conn,"SELECT time,temper FROM temper");
+
+		while ($row = pg_fetch_row($result)) {
+            $time_data=$row[0];
+            $temper_data=$row[1];
+		}
+$str = $time_data;
+$str1 = explode(" ", $str); 
+$str2 = explode(":", $str1[1]); 
+$time=$str2[0]+':'+$str2[1] 
+require('temper1.html');
