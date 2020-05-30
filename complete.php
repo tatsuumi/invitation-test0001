@@ -24,7 +24,7 @@ session_start();
         $flag=true;
         //postgresデータ追加
         session_start();
-        $constr=$_SESSION['constr'];
+        $conn=$_SESSION['constr'];
         $link = pg_connect($conn);
 /*
         $sql = "SELECT * FROM people";
