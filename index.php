@@ -9,7 +9,7 @@ host=".$host.
 " port=5432 
 dbname=".$dbname.
 " user=".$user.
-" password=".$user."";
+" password=".$password."";
 
 $_SESSION['constr']=$constr; 
 
