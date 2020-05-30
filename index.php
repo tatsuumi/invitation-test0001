@@ -8,8 +8,8 @@ $constr = "
 host=".$host.
 " port=5432 
 dbname=".$dbname.
-"user=".$user.
-"password=".$user."";
+" user=".$user.
+" password=".$user."";
 
 $_SESSION['constr']=$constr; 
 
