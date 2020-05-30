@@ -20,11 +20,12 @@ session_start();
 
         // confirm.html 読み込み
          require("complete.html");
+    
 
-
-	$dsn = 'mysql:dbname=join;host=localhost';
-	$user = 'testuser1';
-        $password = 'tatsu227'; //パスワードはダブルコーテーション
+	    $dsn = $_SESSION['dsn'];
+	    $user = $_SESSION['user'];
+        $password = $_SESSION['password']; 
+        
         $flag=true;
         //postgresデータ追加
         $constr =  "
